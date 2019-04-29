@@ -8,8 +8,8 @@ function dibujaTarjetas(arreglo) {
 	let imprime = "<table id='registro'><tr><th>Habitación</th><th>Huesped</th></tr>";
 	//La siguiente estructura de for es casi ya un arcaísmo. Sin embargo, los clásicos nunca mueren.
 	for (let i = 0; i < arreglo.length; i++) {
-		imprime += "<tr><td>" + arreglo[i].numHabitacion + "</td><td>" + arreglo[i].nombreHuesped + "</td></tr>";
-	}
+	   imprime += "<tr><td>" + arreglo[i].numHabitacion + "</td><td>" + arreglo[i].nombreHuesped + "</td></tr>";
+	   }
 	imprime += "</table>"
 	ctrlMostrado.innerHTML = imprime;
 }
@@ -22,14 +22,13 @@ function dibujaTarjetas(arreglo) {
 // para saber si este valor es mayor o menor que el que sigue 
 // si lo es, me cambia el maximo por el nuevo numero, si no regresa el mismo maximo que ya se tenia
 function findMax(arreglo, end){
-
 	var max=0;
  	for(var i = 0; i<=end; i++){
         if (parseInt(arreglo[i].numHabitacion) > parseInt(arreglo[max].numHabitacion)){
         	max=i;
         }
     }
-    return max;
+  return max;
 }
 //PSEUDOCODIGO PARA ORDENAR DE MENOR A MAYOR
 // La funcion va a obtener la posicion en el arreglo de nuestro maximo y lo va a mover de posicion hasta el final
@@ -37,52 +36,43 @@ function findMax(arreglo, end){
 // Vamos a hacer un ciclo que vaya desde el final del arreglo hasta la posicion 2 del arreglo(cuando ya todo este ordenado) 
 // En el ciclo buscamos la posicion del valor maximo en el arreglo
 // La posicion que encontremos la guardamos en una variable
-// 
-
 
 function ordenaPorHabitacion(arreglo) {
-	 var temp;
+	var temp;
   for(var end = arreglo.length-1; end>=0;end--){
     maxpos=findMax(arreglo,end);
-  //  console.log(maxpos);
+    //console.log(maxpos);
     temp=arreglo[maxpos];
     arreglo[maxpos]=arreglo[end];
     arreglo[end]=temp;
   }
-// return arr;
-//  console.log("arreglo",arr);
- //return arreglo;
-dibujaTarjetas(arreglo);
+//return arreglo;
+  dibujaTarjetas(arreglo);
 }
 
 	//En esta función escribe la función que ordenará el arreglo por habitación
-
-	function findMaxNombre(arreglo, end){
-
-	var max=0;
+function findMaxNombre(arreglo, end){
+  var max=0;
  	for(var i = 0; i<=end; i++){
-        if (arreglo[i].nombreHuesped > arreglo[max].nombreHuesped){
-        	max=i;
-        }
+    if (arreglo[i].nombreHuesped > arreglo[max].nombreHuesped){
+      max=i;
+      }
     }
-    return max;
+  return max;
 }
 
 function ordenaPorHuesped(arreglo) {
 	//Acá puedes hacer la otra que ordene por el nombre del huesped
-
-		 var temp;
+  var temp;
   for(var end = arreglo.length-1; end>=0;end--){
     maxpos=findMaxNombre(arreglo,end);
-  //  console.log(maxpos);
+    //console.log(maxpos);
     temp=arreglo[maxpos];
     arreglo[maxpos]=arreglo[end];
     arreglo[end]=temp;
   }
-
- // return arreglo;
-//   ctrlNombre.innerHTML = arreglo;
-
-   dibujaTarjetas(arreglo);
+  //return arreglo;
+  //ctrlNombre.innerHTML = arreglo;
+  dibujaTarjetas(arreglo);
 }
 
